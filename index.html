@@ -1,0 +1,897 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranikesia Cleaning Service — Premium Home & Office Cleaning</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #e3e3e3;
+    --verde-escuro: #d6ac1e;
+    --preto: #0a0a0a;
+    --cinza-escuro: #111111;
+    --cinza: #2c2b2b;
+    --branco: #f5f5f0;
+    --texto: #e3e3e3;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--preto);
+    color: var(--branco);
+    font-family: 'Barlow', sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px 80px;
+    overflow: hidden;
+  }
+
+  .hero {
+    background-image: url('./logo.jpg');
+    background-size: cover;
+    background-position: center top;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(10,10,10,0.92) 0%,
+      rgba(10,10,10,0.75) 45%,
+      rgba(10,10,10,0.35) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: #d6ab1e2e;
+    border: 1px solid #ffd23f82;
+    color: var(--verde);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 14vw, 130px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    color: var(--branco);
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+
+  .hero-title span {
+    color: var(--verde);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: var(--texto);
+    max-width: 560px;
+    margin: 24px auto 0;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--verde);
+    margin: 32px auto;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+
+  /* ── PROBLEMA ── */
+  .section {
+    padding: 80px 20px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--verde);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(38px, 7vw, 60px);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .section-body {
+    color: var(--texto);
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  .highlight {
+    color: var(--verde);
+    font-weight: 700;
+  }
+
+  /* ── STRIP ── */
+  .strip {
+    background: var(--verde);
+    color: var(--preto);
+    padding: 18px 20px;
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(22px, 5vw, 36px);
+    letter-spacing: 2px;
+  }
+
+  /* ── BULLETS ── */
+  .benefits {
+    padding: 80px 20px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .benefit-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .benefit-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    background: #d6ab1e2e;
+    border: 1px solid #ffd23f82;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+
+  .benefit-text strong {
+    display: block;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--branco);
+    margin-bottom: 4px;
+  }
+
+  .benefit-text span {
+    font-size: 15px;
+    color: var(--texto);
+  }
+
+  /* ── PROVA SOCIAL ── */
+  .testimonials {
+    background: var(--cinza-escuro);
+    padding: 80px 20px;
+  }
+
+  .testimonials-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 520px) {
+    .testi-grid { grid-template-columns: 1fr; }
+  }
+
+  .testi-card {
+    background: var(--cinza);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 22px;
+  }
+
+  .testi-stars {
+    color: var(--verde);
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+
+  .testi-text {
+    font-size: 15px;
+    color: var(--texto);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  .testi-author {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--branco);
+  }
+
+  /* ── OFERTA ── */
+  .offer {
+    padding: 80px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .price-box {
+    background: var(--cinza);
+    border: 1px solid rgba(207, 187, 8, 0.2);
+    border-radius: 24px;
+    padding: 48px 36px;
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .price-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--verde), transparent);
+  }
+
+  .price-old {
+    font-size: 16px;
+    color: var(--texto);
+    text-decoration: line-through;
+    margin-bottom: 6px;
+  }
+
+  .price-new {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 90px;
+    line-height: 1;
+    color: var(--verde);
+    letter-spacing: 2px;
+  }
+
+  .price-cents {
+    font-size: 42px;
+    vertical-align: super;
+  }
+
+  .price-label {
+    font-size: 13px;
+    color: var(--texto);
+    margin-top: 6px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .price-tag {
+    display: inline-block;
+    background: rgba(236, 242, 61, 0.15);
+    color: var(--verde);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+
+  /* ── CTA BUTTON ── */
+  .cta-btn {
+    display: block;
+    background: var(--verde);
+    color: var(--preto);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 2px;
+    padding: 20px 40px;
+    border-radius: 100px;
+    text-decoration: none;
+    margin: 28px auto 0;
+    max-width: 420px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 40px rgba(230, 242, 61, 0.3);
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  .cta-btn:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 60px rgba(239, 242, 61, 0.5);
+    animation: none;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 40px rgba(242, 233, 61, 0.3); }
+    50% { box-shadow: 0 0 70px rgba(239, 242, 61, 0.55); }
+  }
+
+  .cta-guarantee {
+    font-size: 13px;
+    color: var(--texto);
+    margin-top: 18px;
+  }
+
+  .cta-guarantee span { color: var(--verde); font-weight: 600; }
+
+  /* ── GARANTIA ── */
+  .guarantee {
+    background: linear-gradient(135deg, #101a00, #0a0a0a);
+    border-top: 1px solid rgba(242, 221, 61, 0.1);
+    border-bottom: 1px solid rgba(242, 236, 61, 0.1);
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .guarantee-inner {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .guarantee-icon {
+    font-size: 56px;
+    margin-bottom: 16px;
+  }
+
+  .guarantee-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    color: var(--verde);
+    margin-bottom: 12px;
+  }
+
+  .guarantee-text {
+    color: var(--texto);
+    font-size: 16px;
+  }
+
+  /* ── FAQ ── */
+  .faq {
+    padding: 80px 20px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding: 22px 0;
+  }
+
+  .faq-q {
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--branco);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .faq-q::after {
+    content: '+';
+    font-size: 24px;
+    color: var(--verde);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+
+  .faq-a {
+    font-size: 15px;
+    color: var(--texto);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+  }
+
+  .faq-item.open .faq-a {
+    max-height: 300px;
+    padding-top: 14px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #060606;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 12px;
+    color: #555;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── STICKY CTA mobile ── */
+  .sticky-bar {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--preto);
+    border-top: 1px solid rgba(227, 242, 61, 0.2);
+    padding: 12px 20px;
+    z-index: 100;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .sticky-bar { display: block; }
+  }
+
+  .sticky-bar a {
+    display: block;
+    background: var(--verde);
+    color: var(--preto);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    padding: 14px;
+    border-radius: 100px;
+    text-decoration: none;
+  }
+
+  /* ── MÉDICO ── */
+  .doctor-section {
+    background: var(--cinza-escuro);
+    padding: 80px 20px;
+    border-top: 1px solid rgba(181,242,61,0.08);
+    border-bottom: 1px solid rgba(181,242,61,0.08);
+  }
+
+  .doctor-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  @media (max-width: 620px) {
+    .doctor-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .doctor-photo-wrap { margin: 0 auto; }
+    .doctor-tags { justify-content: center; }
+  }
+
+  .doctor-photo-wrap {
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+
+  .doctor-photo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: conic-gradient(var(--verde) 0deg, transparent 200deg);
+    z-index: 0;
+    animation: spin 8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .doctor-photo-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: var(--cinza-escuro);
+    z-index: 1;
+  }
+
+  .doctor-photo {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .doctor-kicker {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--verde);
+    margin-bottom: 10px;
+  }
+
+  .doctor-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(34px, 6vw, 52px);
+    line-height: 1;
+    color: var(--branco);
+    margin-bottom: 16px;
+  }
+
+  .doctor-bio {
+    font-size: 16px;
+    color: var(--texto);
+    line-height: 1.75;
+    margin-bottom: 22px;
+  }
+
+  .doctor-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .doctor-tag {
+    background: #d6ab1e2e;
+    border: 1px solid #ffd23f82;
+    color: var(--verde);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.5px;
+  }
+
+  .doctor-quote {
+    margin-top: 20px;
+    padding: 18px 20px;
+    border-left: 3px solid var(--verde);
+    background: rgba(181,242,61,0.05);
+    border-radius: 0 10px 10px 0;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--branco);
+    line-height: 1.65;
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-badge">Premium Cleaning · Professional · Trusted</div>
+
+  <h1 class="hero-title">
+    Transform Your Home<br>
+    <span>with Premium<br>Cleaning Services</span>
+  </h1>
+
+  <div class="hero-divider"></div>
+
+  <p class="hero-sub">
+    Experience spotless cleaning with meticulous attention to detail.<br>
+    We don’t just clean — <strong>we elevate your space.</strong>
+  </p>
+
+  <a href="https://wa.link/799e3t" class="cta-btn" style="margin-top: 40px;">
+    CALL OR TEXT NOW → 
+  </a>
+
+  <p style="margin-top: 14px; font-size: 13px; color: #666;">
+    📞 Free estimate · <strong style="color:var(--verde)">20% OFF your first cleaning</strong>
+  </p>
+</section>
+
+<!-- ══ STRIP ══ -->
+<div class="strip">
+  SERVING PITTSBURGH, PENNSYLVANIA — WEEKLY · BI-WEEKLY · MONTHLY
+</div>
+
+<!-- ══ SECTION: PROBLEMA → AGORA “WHY CHOOSE US” ══ -->
+<section class="section">
+  <p class="section-label">Professional cleaning you can trust</p>
+  <h2 class="section-title">A cleaner home starts here.</h2>
+
+  <div class="section-body">
+    <p>Your home or office deserves more than a quick tidy-up. At <span class="highlight">Ranikesia Cleaning Service</span>, we deliver a premium experience with consistent, detail-oriented cleaning tailored to your space and your needs.</p>
+
+    <br>
+
+    <p>Whether it's regular upkeep or a full deep clean, our priority is creating a spotless, refreshed environment that makes you feel good the moment you walk in. <span class="highlight">No stress. No hassle. Just results.</span></p>
+  </div>
+</section>
+
+<!-- ══ BENEFITS ══ -->
+<section class="benefits">
+  <p class="section-label">What we offer</p>
+  <h2 class="section-title">Our Cleaning Services</h2>
+
+  <div class="benefit-item">
+    <div class="benefit-icon">🏠</div>
+    <div class="benefit-text">
+      <strong>Regular Cleaning</strong>
+      <span>Perfect for maintaining a consistently fresh and spotless home on a weekly, bi-weekly, or monthly schedule.</span>
+    </div>
+  </div>
+
+  <div class="benefit-item">
+    <div class="benefit-icon">✨</div>
+    <div class="benefit-text">
+      <strong>Deep Cleaning</strong>
+      <span>A complete top-to-bottom clean — ideal for seasonal refreshes, special occasions, or when your home needs extra care.</span>
+    </div>
+  </div>
+
+  <div class="benefit-item">
+    <div class="benefit-icon">💼</div>
+    <div class="benefit-text">
+      <strong>Office Cleaning</strong>
+      <span>Maintain a clean, productive and professional work environment with our detailed office cleaning services.</span>
+    </div>
+  </div>
+
+  <div class="benefit-item">
+    <div class="benefit-icon">🚚</div>
+    <div class="benefit-text">
+      <strong>Move-In Cleaning</strong>
+      <span>Start fresh in your new home with a spotless, sanitized and fully prepared space.</span>
+    </div>
+  </div>
+
+  <div class="benefit-item">
+    <div class="benefit-icon">📦</div>
+    <div class="benefit-text">
+      <strong>Move-Out Cleaning</strong>
+      <span>Leave your old home looking flawless — perfect for tenants, landlords, or anyone needing a high-standard final clean.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <p class="section-label">Client feedback</p>
+    <h2 class="section-title">What our clients say</h2>
+
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Best cleaning service I’ve ever hired in Pittsburgh. My house looked and smelled amazing. Truly premium work."</p>
+        <p class="testi-author">— Sarah M.</p>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I booked a deep clean before moving in. Everything was spotless. I will definitely keep using the bi-weekly service."</p>
+        <p class="testi-author">— Amanda W.</p>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"They are extremely detail-oriented. My office has never looked this organized. Highly recommended!"</p>
+        <p class="testi-author">— Michael R.</p>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Reliable, professional, and very kind. I love coming home after they clean — everything shines."</p>
+        <p class="testi-author">— Jessica K.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT SECTION (antiga “MÉDICO”) ══ -->
+<section class="doctor-section">
+  <div class="doctor-inner">
+    <div class="doctor-photo-wrap">
+      <img class="doctor-photo" src="./ranikesia-photo.png" alt="Ranikesia Cleaning Service">
+    </div>
+
+    <div class="doctor-content">
+      <p class="doctor-kicker">About us</p>
+
+      <h2 class="doctor-name">Ranikesia<br>Cleaning Service</h2>
+
+      <p class="doctor-bio">
+        We provide high-quality residential and commercial cleaning services throughout 
+        <strong style="color:var(--branco)">Pittsburgh, Pennsylvania</strong>.  
+        Our mission is simple: deliver reliable, detailed, and premium cleaning results every time.
+      </p>
+
+      <div class="doctor-tags">
+        <span class="doctor-tag">Professional & Trusted</span>
+        <span class="doctor-tag">Attention to Detail</span>
+        <span class="doctor-tag">Fully Personalized Services</span>
+        <span class="doctor-tag">Satisfaction Focused</span>
+        <span class="doctor-tag">Experience You Can Count On</span>
+      </div>
+
+      <blockquote class="doctor-quote">
+        "We don’t just clean your space — we elevate it.  
+        Our goal is to deliver a spotless environment that brings comfort, freshness, and peace of mind."
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OFERTA ══ -->
+<section class="offer" id="oferta">
+  <p class="section-label">Special offer</p>
+  <h2 class="section-title">Get your FREE estimate<br>and 20% OFF your first cleaning.</h2>
+
+  <div class="price-box">
+    <div class="price-tag">⚡ Limited-time offer</div>
+
+    <p class="price-old">Regular price</p>
+
+    <div class="price-new" style="font-size: 70px;">
+      FREE<span class="price-cents"></span>
+    </div>
+
+    <p class="price-label">Call or text for your custom quote</p>
+
+    <a href="https://wa.link/799e3t" class="cta-btn">
+      CALL OR TEXT NOW →
+    </a>
+
+    <p class="cta-guarantee">
+      <span>✅ 20% OFF your first cleaning.</span> Offer valid for new clients in Pittsburgh, PA.
+    </p>
+  </div>
+</section>
+
+<!-- ══ GUARANTEE — adaptada ══ -->
+<section class="guarantee">
+  <div class="guarantee-inner">
+    <div class="guarantee-icon">🛡️</div>
+    <h3 class="guarantee-title">Satisfaction Guarantee</h3>
+    <p class="guarantee-text">
+      Your satisfaction is our priority.  
+      If something wasn’t cleaned the way you expected, contact us within 24 hours and we’ll return to fix it — at no extra cost.
+    </p>
+  </div>
+</section>
+
+<!-- ══ FAQ — totalmente reescrita ══ -->
+<section class="faq">
+  <p class="section-label">FAQ</p>
+  <h2 class="section-title">Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <p class="faq-q">Which areas do you serve?</p>
+    <div class="faq-a">We proudly serve Pittsburgh, Pennsylvania and nearby surrounding areas.</div>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Do I need to be home during the cleaning?</p>
+    <div class="faq-a">No. Many clients provide access instructions. Your security and privacy are always respected.</div>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What should I do before the cleaners arrive?</p>
+    <div class="faq-a">You don’t need to prepare anything. Just ensure we can access your home. We handle the rest.</div>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Do you bring your own cleaning supplies?</p>
+    <div class="faq-a">Yes. We bring all necessary professional-grade products and equipment.</div>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Can I book a recurring cleaning?</p>
+    <div class="faq-a">Absolutely. We offer weekly, bi-weekly, and monthly cleaning schedules based on your needs.</div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══ -->
+<section style="background: var(--cinza-escuro); padding: 80px 20px; text-align: center;">
+  <div style="max-width: 560px; margin: 0 auto;">
+    <p style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px,8vw,60px); line-height:1.05; margin-bottom: 20px;">
+      A cleaner home is one call away.<br>
+      <span style="color:var(--verde)">Book your cleaning today.</span>
+    </p>
+
+    <p style="color: var(--texto); margin-bottom: 32px; font-size: 17px;">
+      Free estimate · 20% OFF your first cleaning
+    </p>
+
+    <a href="https://wa.link/799e3t" class="cta-btn" style="max-width: 460px;">
+      CALL OR TEXT NOW →
+    </a>
+
+    <p style="margin-top: 14px; font-size: 13px; color: #555;">📞 Available weekly, bi-weekly, or monthly</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p>© 2025 Ranikesia Cleaning Service · All rights reserved</p>
+  <p style="margin-top: 6px;">Professional home & office cleaning in Pittsburgh, Pennsylvania.</p>
+</footer>
+
+<!-- ══ STICKY BAR (mobile) ══ -->
+<div class="sticky-bar">
+  <a href="https://wa.link/799e3t">FREE ESTIMATE — CALL NOW →</a>
+</div>
+
+<!-- ══ SCRIPTS (mantidos iguais) ══ -->
+<script>
+  // Animate benefits on scroll
+  const items = document.querySelectorAll('.benefit-item');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  items.forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Hide sticky bar near footer
+  const stickyBar = document.querySelector('.sticky-bar');
+  window.addEventListener('scroll', () => {
+    const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
+    stickyBar.style.display = nearBottom ? 'none' : 'block';
+  });
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"8575daaca958426dbb8c69a8c45ab62d","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
